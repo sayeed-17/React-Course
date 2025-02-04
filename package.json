@@ -1,0 +1,22 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "this is sayeed react learning from namaste react",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sayeed-17/React-Course.git"
+  },
+  "author": "sayeed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sayeed-17/React-Course/issues"
+  },
+  "homepage": "https://github.com/sayeed-17/React-Course#readme",
+  "devDependencies": {
+    "parcel": "^2.13.3"
+  }
+}
