@@ -12,6 +12,8 @@
         <h2>i am h2 heading</h2>
     </div>
 </div> */}
+import React from "react";
+import ReactDOM from "react-dom";
 
 const parent=React.createElement("div",{id:"parent"},[//here if we wnat to add the child tags we will open an array ok...if u have siblings then also u will open an array....so it is becoming so hard right...that is the reason we use JSX.
     React.createElement("div",{id:"child"},[
