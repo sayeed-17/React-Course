@@ -2,8 +2,8 @@
   "name": "namaste-react",
   "version": "1.0.0",
   "description": "this is sayeed react learning from namaste react",
-  
   "scripts": {
+    "start":"parcel index.html",
     "test": "jest"
   },
   "repository": {
