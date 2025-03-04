@@ -87,4 +87,4 @@ when we excecute the npx parcel command dist and .parcel-cache are created(these
 they can be generated again by npx parcel...andddd we remove the cdn links as tehy are not good practice as we have to pdate the links for the latest versions again and again...and also we make use of the broswerversion in node mouldes to set up the latest versions...
 npx parcel index.html(root file)... .parcel-cache are used to have fast build process -->
 
-here dist is a imp folder like after bundling the static files will be going inside the dist and from there we can  run the files im production
+<!-- here dist is a imp folder like after bundling the static files will be going inside the dist and from there we can  run the files im production -->
