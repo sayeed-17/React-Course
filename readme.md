@@ -88,3 +88,23 @@ they can be generated again by npx parcel...andddd we remove the cdn links as te
 npx parcel index.html(root file)... .parcel-cache are used to have fast build process -->
 
 <!-- here dist is a imp folder like after bundling the static files will be going inside the dist and from there we can  run the files im production -->
+
+<!-- FILE STRUCTURE IN REACT -->
+<!-- here we have created a file structure to follow teh company conventionss.....in that for each and every component we will make a seperate file inside src  -->
+<!-- inteadof hardcoding teh data like urls and the apis or array of objects data....(usually teh things wich should be available to entire project is sent in to the UTILS folder) -->
+
+
+<!-- EXPORT AND IMPORT  -->
+<!-- in case if u want to export only one component u can export it like this
+this is called as default import and export 
+export default COMPONENT_NAME;
+and u can import it like this 
+import COMPONENT_NAME from "PATH"
+
+in case if u want to export multiple things in a single file it is not posible by default export 
+there comes the concept of named exports and imports(refer constants.js in UTILS folder)
+u can export like this 
+export const LOGO_URL="https://www.google.com";
+and u can import like this
+import {LOGO_URL} from "path" -->
+

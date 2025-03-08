@@ -45,3 +45,6 @@
     object-fit:fill;
     border-radius: 5px;
 }
+.filter-btn{
+    margin: 10px;
+}
