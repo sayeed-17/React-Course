@@ -108,3 +108,19 @@ export const LOGO_URL="https://www.google.com";
 and u can import like this
 import {LOGO_URL} from "path" -->
 
+//EPISODE 6
+<!-- let us know about monolithic architecture and microservices architecture
+monolithic architecture : in this architecture everything like backend code frontend code authentication code api ocde and db code everything is wriiten inside a single project...what actually happens with this is even if u want to do a small change it may effect the other services like db backened frotend and u have to deploy it again and agian and also if it is a java project then iu have to code everything in the same tech stack....
+
+microservices architecture:all teh micro services can be witten with the different tech stack and we make them interact with each other....this is the best way to code as each and every services are independent to each other... -->
+
+
+<!-- now let us talk about the  types of rendering of a page
+
+1. page loads---> api call(500ms)--->then rendering of the content
+
+2. page loads---> renders the dummy data(shimmer ui)--->api call(as soon as the api gets called)-->renders teh actual data
+
+we always perefer the second way as it is the best practice.
+
+useeffect is the second hook that we are going to use...useeffect is used to do a action after once the page got render...that is if u want to perform any special thing or any work after once page is rendered we make use of the useeffect. -->
