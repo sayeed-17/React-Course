@@ -13,9 +13,15 @@
     </div>
 </div> */}
 import React from "react";
+import { createBrowserRouter, RouterProvider,Outlet } from "react-router";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
+import RestaurantMenu from "./components/RestaurantMenu";
+
 
 
 // const parent=React.createElement("div",{id:"parent"},[//here if we wnat to add the child tags we will open an array ok...if u have siblings then also u will open an array....so it is becoming so hard right...that is the reason we use JSX.
@@ -83,35 +89,60 @@ import Body from "./components/Body";
 // -footer
 //     -copyright
 //     -links
-
-
-
-
-
-
-
-
-
 const AppLayout=()=>{
     return (
         <>
         <Header/>
-        <Body/>
-        </>
-        
-        
+        <Outlet/>
+        </> 
     )
 }
+//here we are creating defining the routing configuration 
+const appRouter=createBrowserRouter([
+    {
+        path:"/",
+        element:<AppLayout/>,
+        children:[{
+            path:"/",
+            element:<Body/>
+        },
+            {
+            path:"/about",
+            element:<About/>,
+        },
+        {
+            path:"/contact",
+            element:<Contact/>,
+        },
+        {
+            path:"restaurants/:resId",
+            element:<RestaurantMenu/>
+        }
+
+        ],
+        errorElement:<Error/>
+    },
+    
+])
+
 
 // ReactDOM.createRoot(<AppLayout/>, document.getElementById("root"));
-console.log('document.getElementById(root)', document.getElementById('root'));
-const rootElement = document.getElementById('root');
-if(rootElement){
-    const root = ReactDOM.createRoot(rootElement);
-    root.render(<AppLayout/>);
-}
-else{
-    console.log("cant get root element");
+// console.log('document.getElementById(root)', document.getElementById('root'));
+// const rootElement = document.getElementById('root');
+// if(rootElement){
+//     const root = ReactDOM.createRoot(rootElement);
+//     root.render(<RouterProvider router={appRouter}/>);
+// }
+// else{
+//     console.log("cant get root element");
+// }
+const rootElement = document.getElementById("root"); // ✅ First, get the root element
+
+if (rootElement) {
+    const root = ReactDOM.createRoot(rootElement); // ✅ Create root only if element exists
+    root.render(<RouterProvider router={appRouter} />);
+} else {
+    console.error("Error: 'root' element not found in the DOM."); // ✅ Handle missing root
 }
 
 

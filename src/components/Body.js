@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 // import { resList } from "../../utils/mockData";
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router";
 //NORMAL JS VARAIABLE
 // let listofrestaurants=[{
 //     "info": {
@@ -1024,12 +1025,15 @@ const Body=()=>{
  const [listofrestaurants,setListofrestaurants]=useState([])
  const [searchText,setSearchText]=useState("");
  const [filterRestaurants,setFilterRestaurants]=useState([])
+// 1.when the dependency array is empty==> it will be called only after initial render
   useEffect(()=>{
-    console.log("it is called once page got rendered")
+    console.log("useEffect is called")
     fetchData();
   },[])
+
   const fetchData=async()=>{
     const data=await fetch("https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=19.1187379&lng=72.84637839999999&carousel=true&third_party_vendor=1")
+   
     const json=await data.json();
     console.log(json);
     setListofrestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [])
@@ -1079,7 +1083,8 @@ const Body=()=>{
         {
                 filterRestaurants.map((resList)=>{
                 return(
-                <RestaurantCard key={resList.info.id} resobj={resList} />
+                  <Link to={"/restaurants/"+resList.info.id} key={resList.info.id} >
+                <RestaurantCard  resobj={resList} /></Link>
             )})
 
         }

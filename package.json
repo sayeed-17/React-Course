@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "this is sayeed react learning from namaste react",
   "scripts": {
-    "start":"parcel index.html",
+    "start": "parcel index.html",
     "test": "jest"
   },
   "repository": {
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.3.0"
   }
 }

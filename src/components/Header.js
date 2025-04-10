@@ -1,7 +1,23 @@
 import { LOGO_URL } from "../../utils/constants";
 import { useState } from "react";
+import { Link } from "react-router";
 const Header=()=>{
     const [LoginBtn,setLoginBtn]=useState("login");
+// // 1.when the dependency array is empty==> it will be called only after initial render
+// useEffect(()=>{
+//     console.log("useEffect is called")
+//     fetchData();
+//   },[])
+//     //2. whenhen the dependency array is not present==>it will be called after every render
+//   useEffect(()=>{
+//     console.log("useEffect is called")
+//     fetchData();
+//   })
+// //3.when the dependency array is having dependency(LoginBtn) ==>it will be called after every time that dependency(LoginBtn) gets changed/updated.
+//   useEffect(()=>{
+//     console.log("useEffect is called")
+//     fetchData();
+//   },[LoginBtn])
     return(
         <div className="header">
             <div className="logo-container">
@@ -9,9 +25,9 @@ const Header=()=>{
             </div>
             <div className="nav-links">
                 <ul>
-                    <li>Home</li>
-                    <li>About </li>
-                    <li>Contact us</li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About Us</Link></li>
+                    <li><Link to="/contact">Contact Us </Link></li> 
                     <li>cart</li>
                     <button className="login-btn" onClick={()=>{
                         LoginBtn==="login"?setLoginBtn("logout"):setLoginBtn("login");
@@ -23,4 +39,4 @@ const Header=()=>{
 }
 
 export default Header;
-//if u use normal js variable here it cant dynamically render on the ui for that to happen u use of teh state variable which will automatically renders whenever there is a call of setSTATE() function and it will render teh whole component.
+//if u use normal js variable here it cant dynamically render on the ui for that to happen u use of teh state variable which will automatically renders whenever there is a call of setSTATE() function and it will render the whole component.

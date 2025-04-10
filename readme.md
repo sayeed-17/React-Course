@@ -119,8 +119,44 @@ microservices architecture:all teh micro services can be witten with the differe
 
 1. page loads---> api call(500ms)--->then rendering of the content
 
-2. page loads---> renders the dummy data(shimmer ui)--->api call(as soon as the api gets called)-->renders teh actual data
+<!-- 2. page loads---> renders the dummy data(shimmer ui)--->api call(as soon as the api gets called)-->renders teh actual data
 
 we always perefer the second way as it is the best practice.
 
-useeffect is the second hook that we are going to use...useeffect is used to do a action after once the page got render...that is if u want to perform any special thing or any work after once page is rendered we make use of the useeffect. -->
+useeffect is the second hook that we are going to use...useeffect is used to do a action after once the page got render...that is if u want to perform any special thing or any work after once page is rendered we make use of the useeffect. --> -->
+
+
+<!-- EPISODE 7 -->
+
+MORE POINTS TO KNOW ABOUT USEEFFECT
+USEFFECT HOOK IS USED WHEN U WANT TO DO SOMETHING AFTER UR COMPONNT GOT RENDERED...IN THE USEEFFECT U WILL BE HAVING TWO ARGUMENTS A ARROW FUNCTION AND A DEPENDENCY ARRAY....
+DEPENDENCY ARRAY CHANGES THE BEHAVIOUR OF THE USEEFFECT HOOK
+LIKE BY DEFAULT IT WILL BE HAVING NO DEPENDENCY ARRAY.......THERE ARE THREE TYPES OF DEPENDENCY ARRAYS
+1.when the dependency array is not present ===> useeffect will be called after every render
+2.when the dependency array is empty ===> it will be called only after intial rende.... after it wont be called for any of the renders 
+3.when the dependency array has teh dependency.....useeffect will be called everytime only the dependency gets updated/changed
+
+
+
+MORE POINTS TO KNOW ABOUT USESTATE
+1.usestate gives us a local state variable which should be written inside a functional component ....make sure that u will be writing the usestate hook inside the functional component
+2.always make sure that it should be written inside the top of the functional component
+3.always make sure that u wont be using the usestate inside the loops,functions and conditional statemnets as it may leads to inconsistency in the code.
+
+CreateBrowserRoute is used to create the route cong=figuration and we assign it to teh variable and it is list of objects in whuch we have path,element,errrorelement...path will tell the path that is going to be added to base url(/,/about,/contact)....and element will tell what component or page to render if that is present...and errorelement will tell what to render in case if wrong url is given other than path
+
+
+and route provide will be incluing this created configuration to the app
+
+UseRouteError hook is used to know more about the error we create a variable and assign this function to it and comnsole log it....by using this hook we can get extra info abt error
+
+
+firs t ogf alll we will be creating configurations to say on what path what componet/page has to be rendered like that...after that  to make the navigation happen u will make use of the thing is called as "Link" in which u will tell where to navigate ...it is isimilar to that of the anchor tag but there whole page gets reloaed here the component gets changed thats it page doesnt get reloaded component rerenders thats it....in anchor tag we will be using href=""...but in Link we will be using to="" like this....
+
+we make use of the children in the createBroserRouter if u want to header to be intact and change the body according to the page u r in....u just make a root element to remder at the top and in children u will tell at what path what element has to be rendered like that....for this to happen u should add "Outlet" to the root element.....what Outlet does is that it will replaces the element/component according to path in children ....
+
+single page applications means here in react instead of going to different pages on the single page itself the components renders
+
+there are two types of Routing
+1.server side routing(here the things are loaded from the network calls)
+2.client-side Routing(here the things are already loaded u just use them)
