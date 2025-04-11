@@ -12,15 +12,16 @@
         <h2>i am h2 heading</h2>
     </div>
 </div> */}
-import React from "react";
+import React,{lazy, Suspense} from "react";
 import { createBrowserRouter, RouterProvider,Outlet } from "react-router";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import About from "./components/About";
+// import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+// import Grocery from "./components/Grocery";
 
 
 
@@ -97,6 +98,10 @@ const AppLayout=()=>{
         </> 
     )
 }
+
+const Grocery=lazy(()=>import("./components/Grocery"))
+const About=lazy(()=>import("./components/About"))
+
 //here we are creating defining the routing configuration 
 const appRouter=createBrowserRouter([
     {
@@ -108,7 +113,7 @@ const appRouter=createBrowserRouter([
         },
             {
             path:"/about",
-            element:<About/>,
+            element:(<Suspense fallback={<h1>loading.........</h1>}><About/></Suspense>),
         },
         {
             path:"/contact",
@@ -117,6 +122,13 @@ const appRouter=createBrowserRouter([
         {
             path:"restaurants/:resId",
             element:<RestaurantMenu/>
+        },
+        {
+            path:"/grocery",
+            element:(
+            <Suspense fallback={<h1>loading..........</h1>}
+            ><Grocery/>
+            </Suspense>),
         }
 
         ],
@@ -177,3 +189,7 @@ if (rootElement) {
 
 
 //  CONFLICT DRIVEN UI is teh ui which is friven by teh conflict that is data from teh backend.....
+
+
+//Episode 9
+//the point that we are creating grocery component here is ....in episode 8 of optimizing the application we know taht parcel will bundle all the components as 1 js file and all html files as 1 html file and all the css files as 1 css file and we have to make sure that this bundle size of js should be small...if the "bundle size becomes big" then it is called as "bloating of the app"..."in order to reduce the size if the bundle we will break our code into small pieces and create different bundles so that size of bundles will be small"...this process is called as "chunking"..... for this to happen we will make use of teh concept called as lazy loading which will make that component as a seperate bundle as well as lazy loading means load that component only when we wanted to to do so....otherwise dont load that component unill and unless we navigate to that page......so in this we will be having lazy method which consists arrow method in which it consists of import method having path of the component...and we will be using the suspend fallback(which returns jsx) in order to show the things during the time period where the lazy loading component gets loaded instead of thrwoing error.u can see this bundle in netork--->js.before only 1 js used to there now it used to have 2 js bundles....got it
