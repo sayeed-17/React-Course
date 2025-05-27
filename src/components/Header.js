@@ -21,19 +21,18 @@ const Header=()=>{
 //   },[LoginBtn])
 const onlinestatus=useOnlineStatus();
     return(
-        <div className="header">
+        <div className="header flex justify-between  bg-pink-100 sm:bg-yellow-100 lg:bg-green-100">
             <div className="logo-container">
-                <img className="logo" src={LOGO_URL} alt="app logo" />
+                <img className="logo w-40" src={LOGO_URL} alt="app logo" />
             </div>
             <div className="nav-links">
-                <ul className="header-lists">
-                    <li>online status:{onlinestatus?"🟢":"🔴"}</li>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About Us</Link></li>
-                    <li><Link to="/contact">Contact Us </Link></li> 
-                    <li><Link to="/grocery">Grocery</Link></li>
-                    <li>cart</li>
-                    <button className="login-btn" onClick={()=>{
+                <ul className="header-lists flex mx-4 px-6 py-4 items-center justify-center">
+                    <li className="p-4 text-2xl">online status:{onlinestatus?"🟢":"🔴"}</li>
+                    <li className="p-4 text-2xl"><Link to="/">Home</Link></li>
+                    <li className="p-4 text-2xl"><Link to="/about">About Us</Link></li>
+                    <li className="p-4 text-2xl"><Link to="/grocery">Grocery</Link></li>
+                    <li className="p-4 text-2xl">Cart</li>
+                    <button className="login-btn text-2xl" onClick={()=>{
                         LoginBtn==="login"?setLoginBtn("logout"):setLoginBtn("login");
                     }}>{LoginBtn}</button>
                 </ul>

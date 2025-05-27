@@ -1031,7 +1031,7 @@ const Body=()=>{
     console.log("useEffect is called")
     fetchData();
   },[])
-
+  
   const fetchData=async()=>{
     const data=await fetch("https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=19.1187379&lng=72.84637839999999&carousel=true&third_party_vendor=1")
    
@@ -1050,7 +1050,7 @@ const Body=()=>{
   }
     return(
     <div className="body">
-    <div className="filter">
+    <div className="filter flex flex-wrap ">
         {/* <button className="filter-btn" onClick={
           listofrestaurants=listofrestaurants.filter((res)=>{
             return res.info.avgRating>4
@@ -1058,12 +1058,12 @@ const Body=()=>{
         } >
             top rated restaurants</button> */}
             {/* u cant modify the data inside the state variable like u do with the nrml variable for that u make use of setstatevariabe name */}
-
-            <div className="search">
-              <input type="text" value={searchText} onChange={(e)=>{
+           
+            <div className="search flex">
+              <input className="border border-black px-2 mx-2 my-2 rounded-md" type="text " value={searchText} onChange={(e)=>{
                 setSearchText(e.target.value);
               }}/>
-              <button onClick={()=>{
+              <button className="bg-green-100 px-2 mx-2 " onClick={()=>{
                 const filteredrestaurants=listofrestaurants.filter((res)=>{
                   return res.info.name.toLowerCase().includes(searchText)
                 })
@@ -1080,6 +1080,7 @@ const Body=()=>{
     setListofrestaurants(filteredlist)}}>
               top rated restaurants
             </button>
+   
     </div>
     <div className="res-container">
         {/* props example(here we are rendrrring that means calling the function[component]) */}

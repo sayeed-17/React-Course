@@ -160,3 +160,47 @@ single page applications means here in react instead of going to different pages
 there are two types of Routing
 1.server side routing(here the things are loaded from the network calls)
 2.client-side Routing(here the things are already loaded u just use them)
+
+
+
+
+REDUX CONCEPT
+
+redux is useful only for the large projects where ur app is highly dependent on the data and redux has 5 important things
+1.store
+2.slice
+3.action
+4.dispatch
+5.reducer
+6.selector
+store is the warehouse kind of thing, it is a large object in which important data is being stored
+slies are the part of the store like they are logical partitions (user slice , theme slice, like this)
+when u want to update the data u cant directly update the data u have to diapacth the action and then use reducer
+let us say for example when u click on add button the count in the store has to get increased u cant directly modify data in the store or slice....u have to dispatch(send) the action and call the reducer function(a logic to update the data in the store) and that will update the data in the store...
+when u want to read the data from the store u have to use selector to fetch the data from the store/slice
+
+
+Redux ToolKit
+install libraries
+  - @reduxjs/toolkit and react-redux
+create a store
+connect our store to app
+create a slice
+dispatch(action)
+selector
+
+subscribing to store means useselector says that " watch for the data in the store and if data gets changed in the store it has to get changed (show the sync data) in the component also (rerender the component) like this...
+Component mounts
+
+useSelector says to Redux: "Watch this part of the store"
+
+If that part of the store changes → React re-renders the component
+
+const cartItems = useSelector((state) => state.cart.items);
+This line:
+
+Subscribes the component to state.cart.items
+
+If anything in cart.items changes → React automatically re-renders this component
+
+in react toolkit it secretly creates a copy of older data and updates the new data in it where as in vanilla redux it says not to mutate directly it expects us to manuallu create a new copy like that which gets simplified by the redx toolkit(here we are not diurectly mutating (overwriting) the original data but we are creating a acopy of it)

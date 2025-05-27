@@ -91,4 +91,4 @@ export default UserClass;
 //when u change the page if it is seen on screen that means component is mounted/remdered if that component is not seen on screen then it is said to be as component is  unmounted....so here whenever u change the screen from about to contact pahe componentwillunmount will be called.
 
 
-//CONSTRUCTOR--->RENDER---->COMPONENT DID MOUNT--->API CALL--->RENDER AGAIN(AS SETSTATE IS CALLED)-->component did upadte---->component will unmount
+//CONSTRUCTOR--->RENDER---->COMPONENT DID MOUNT--->API CALL--->RENDER AGAIN(AS SETSTATE IS CALLED)-->component did upadte---->component will unmount 
