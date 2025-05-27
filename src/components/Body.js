@@ -1033,7 +1033,7 @@ const Body=()=>{
   },[])
   
   const fetchData=async()=>{
-    const data=await fetch("https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=19.1187379&lng=72.84637839999999&carousel=true&third_party_vendor=1")
+    const data=await fetch("https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.1187379&lng=72.8463783&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
    
     const json=await data.json();
     console.log(json);
