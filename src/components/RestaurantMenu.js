@@ -28,17 +28,18 @@ const RestaurantMenu = ()=>{
     const {itemCards}=resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
     // console.log("here")
     // console.log("resInfo",resInfo);
+    
 return(
     <div className="menu">
         <h1>{name}</h1>
         <p>{cuisines.join(",")}-{costForTwoMessage}</p>
         <h1>Menu</h1>
         {
-        itemCards.map((item)=>(
+        itemCards?.map((item)=>(
              <li key={item?.card?.info?.id}>{item.card.info.name}</li>
         ))
     }
     </div>
 )
 }
-export default RestaurantMenu
+export default RestaurantMenu;

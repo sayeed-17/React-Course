@@ -1026,31 +1026,36 @@ const Body=()=>{
  const [listofrestaurants,setListofrestaurants]=useState([])
  const [searchText,setSearchText]=useState("");
  const [filterRestaurants,setFilterRestaurants]=useState([])
+ const [isloading,setIsloading]=useState(true)
 // 1.when the dependency array is empty==> it will be called only after initial render
   useEffect(()=>{
     console.log("useEffect is called")
     fetchData();
+    console.log("Loading:", isloading);
+
   },[])
   
   const fetchData=async()=>{
+    setIsloading(true);
     const data=await fetch("https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.1187379&lng=72.8463783&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
    
     const json=await data.json();
     console.log(json);
     setListofrestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [])
     setFilterRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [])
+    setIsloading(false);
 
   }
   const onlinestatus=useOnlineStatus();
   if(onlinestatus===false){
     return <h1>oh oooo!!!! it seems that your internet is not connected...please check your internet connection</h1>
   }
-  if(listofrestaurants.length===0){
+  if(isloading){
     return <Shimmer/>
   }
     return(
     <div className="body">
-    <div className="filter flex flex-wrap ">
+    <div className="filter flex">
         {/* <button className="filter-btn" onClick={
           listofrestaurants=listofrestaurants.filter((res)=>{
             return res.info.avgRating>4
@@ -1059,11 +1064,11 @@ const Body=()=>{
             top rated restaurants</button> */}
             {/* u cant modify the data inside the state variable like u do with the nrml variable for that u make use of setstatevariabe name */}
            
-            <div className="search flex">
-              <input className="border border-black px-2 mx-2 my-2 rounded-md" type="text " value={searchText} onChange={(e)=>{
+            <div className="search">
+              <input className="border border-solid p-0.5 mr-1 rounded-sm " type="text " value={searchText} onChange={(e)=>{
                 setSearchText(e.target.value);
               }}/>
-              <button className="bg-green-100 px-2 mx-2 " onClick={()=>{
+              <button className="bg-blue-200 px-4 py-1 mr-5 rounded-sm cursor-pointer" onClick={()=>{
                 const filteredrestaurants=listofrestaurants.filter((res)=>{
                   return res.info.name.toLowerCase().includes(searchText)
                 })
@@ -1071,7 +1076,7 @@ const Body=()=>{
               }}>search</button>
             </div>
 
-            <button className="filter-btn" onClick={()=>{
+            <button className="filter-btn px-4 py-1 bg-orange-200 rounded-sm cursor-pointer" onClick={()=>{
               const filteredlist=listofrestaurants.filter((res)=>{
                 return res.info.avgRating>4
               }
@@ -1082,7 +1087,7 @@ const Body=()=>{
             </button>
    
     </div>
-    <div className="res-container">
+    <div className="res-container flex flex-wrap">
         {/* props example(here we are rendrrring that means calling the function[component]) */}
         {/* <RestaurantCard resname="meghana foods" cuisines="Biryani,Andhra,South Indian" rating="4.3" delivery_time="38 minutes"/>
         <RestaurantCard resname="KFC" cuisines="fast food,chicken" rating="4.1" delivery_time="20 minutes"/> */}
