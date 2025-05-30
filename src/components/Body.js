@@ -1,4 +1,5 @@
 import RestaurantCard from "./RestaurantCard";
+// import RestaurantCard,{withPromotedRestaurantCard} from "./RestaurantCard";//importing hoc 
 // import { resList } from "../../utils/mockData";
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
@@ -1023,10 +1024,11 @@ const Body=()=>{
   //     "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
   //   }
   // ]);
- const [listofrestaurants,setListofrestaurants]=useState([])
+  const [listofrestaurants,setListofrestaurants]=useState([])
  const [searchText,setSearchText]=useState("");
  const [filterRestaurants,setFilterRestaurants]=useState([])
  const [isloading,setIsloading]=useState(true)
+//  const RestaurantCardwithPromoted=withPromotedRestaurantCard(RestaurantCard) this is important for calling hoc
 // 1.when the dependency array is empty==> it will be called only after initial render
   useEffect(()=>{
     console.log("useEffect is called")
@@ -1046,6 +1048,7 @@ const Body=()=>{
     setIsloading(false);
 
   }
+  console.log("body rendered",listofrestaurants)
   const onlinestatus=useOnlineStatus();
   if(onlinestatus===false){
     return <h1>oh oooo!!!! it seems that your internet is not connected...please check your internet connection</h1>
@@ -1099,6 +1102,10 @@ const Body=()=>{
             )})
 
         }
+        {/* {
+          // HIGHER ORDER COMPONENT USAGE EXAMPLE
+          resList.info.promoted?<RestaurantCardwithPromoted resobj={resList}/>:<RestaurantCard resobj={resList}/>
+        } */}
     </div>
         {/* <RestaurantCard resobj={resList[0]}/>
         <RestaurantCard resobj={resList[1]}/> */}

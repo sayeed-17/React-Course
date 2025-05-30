@@ -20,7 +20,15 @@ const RestaurantCard=({resobj})=>{
            
         </div>
     )
-
 }
+// Higher order component usage
+//  export const withPromotedRestaurantCard=(RestaurantCard)=>{
+//     return (props)=>{
+//         return {
+//             <label className="p-2 m-2 rouded-sm bg-black text-white">Promoted</label>
+//             <RestaurantCard {...props}/>//here we pass spread operator because it should be the same restuarnat card and it should have same properties in hoc we should nt change the original component we add anything outside of it
+//         }
+//     }
+//  }
 
 export default RestaurantCard;

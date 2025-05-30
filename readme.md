@@ -204,3 +204,14 @@ Subscribes the component to state.cart.items
 If anything in cart.items changes → React automatically re-renders this component
 
 in react toolkit it secretly creates a copy of older data and updates the new data in it where as in vanilla redux it says not to mutate directly it expects us to manuallu create a new copy like that which gets simplified by the redx toolkit(here we are not diurectly mutating (overwriting) the original data but we are creating a acopy of it)
+
+
+****************************** HIGHER ORDER COMPONENTS ******************************* 
+a component which takes the component and returns a component is called as hoc....here we use this concept hwne we want to add / enhance additional features to the existing component...key thing we have to rememenber here is we r not going to change the code of the exiting component , we will be adding some features on top of it thats it...
+
+
+
+
+*********************************LIFTING TEH STATE MANAGEMENT***************************************
+lifting the state management means we will be having a a child and parent component right...if the parent component takes over the control of its child component it is called as the lifting up the state management and here controlled and uncontrolled components concept comes...
+the main example of the statemgmt is that accordian how it is working is that parent has a showindex and setshowindex as state and it will be used for index and we will be passing props showitems and setshowitems 

@@ -2,11 +2,16 @@
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
 import useRestaurantMenu from "../../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
+import React ,{ useState } from "react";
+// import { useState } from "react";
 //here we imported usestate coz we have the data coming  from the api and to show that u need state right for that we will be using this usestate....
 //UseParams is a hook we is used to fetch the dynamic param values that we give in url and returns a object...in that object it will be like {resId : 229} like this
 
 const RestaurantMenu = ()=>{
     const {resId}=useParams()
+    const[showIndex,setShowIndex]=useState();
+    // const [showIndex,setShowIndex]=useState(0);
     // const [resInfo,setResInfo]=useState(null) 
     // useEffect(()=>{
     //     fetchMenu();
@@ -26,19 +31,34 @@ const RestaurantMenu = ()=>{
     }
     const {name,cuisines,costForTwoMessage}=resInfo?.cards[2]?.card?.card?.info;
     const {itemCards}=resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+    // console.log("category data :",resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card)
+    const categories=resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c=>(
+        c.card?.card?.["@type"]=="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    ));
+    console.log("category data",categories)
+    
     // console.log("here")
     // console.log("resInfo",resInfo);
-    
 return(
-    <div className="menu">
-        <h1>{name}</h1>
-        <p>{cuisines.join(",")}-{costForTwoMessage}</p>
-        <h1>Menu</h1>
-        {
+    <div className="menu text-center">
+        <h1 className="font-semibold text-2xl">{name}</h1>
+        <p className="font-medium text-lg p-1 m-1">{cuisines.join(",")}-{costForTwoMessage}</p>
+         <h1 className="font-medium text-lg">Menu</h1>
+        {/* {
         itemCards?.map((item)=>(
              <li key={item?.card?.info?.id}>{item.card.info.name}</li>
         ))
+    }  */}
+
+    {
+        categories.map((category,index)=>(
+            <RestaurantCategory data={category?.card?.card} showItems={index === showIndex?true:false} setShowIndex={()=>setShowIndex(index)}/>
+        ))
     }
+    
+
+    
+       
     </div>
 )
 }
